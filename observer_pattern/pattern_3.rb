@@ -2,7 +2,9 @@
 # Perhaps a better way of solving of the notification problem in general way
 
 class Employee
-	def intialize
+	attr_accessor :name, :title, :salary
+	
+	def initialize(name, title, salary)
 		@name = name
 		@title = title
 		@salary = salary
@@ -44,7 +46,7 @@ class Accounting
 	end
 end
 
-fred = Employee.new("Fred Flistine", "Crane Operator", 30000.0, payroll)
+fred = Employee.new("Fred Flistine", "Crane Operator", 30000.0)
 
 payroll = Payroll.new
 accounting = Accounting.new

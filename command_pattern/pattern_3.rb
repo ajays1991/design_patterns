@@ -1,3 +1,6 @@
+require 'fileutils'
+require 'byebug'
+
 class Command
 	attr_reader :description
 
@@ -88,26 +91,29 @@ end
 cmds = CompositeCommand.new
 
 cmds.add_command(CreateFile.new('file1.txt', "Hello world \n"))
-cmds.add_command(CopyFile.new('file1.txt', 'file2.txt'))
-cmds.add_command(DeleteFile.new('file1.txt'))
+#cmds.add_command(CopyFile.new('file1.txt', 'file2.txt'))
+#cmds.add_command(DeleteFile.new('file1.txt'))
 
+puts("Executing commands")
 cmds.execute
 puts(cmds.description)
+puts("Unexecuting commands")
+#cmds.unexecute
 
 # queuing up commands like in yes/no installer
 
 # example of command pattern in ruby codebase
 # Active record
 
-class CreateBookTable < ActiveRecord::Migration
-	def self.up
-		create_table :books do |t|
-			t.column :title, :string
-			t.column :author, :string
-		end
-	end
+# class CreateBookTable < ActiveRecord::Migration
+# 	def self.up
+# 		create_table :books do |t|
+# 			t.column :title, :string
+# 			t.column :author, :string
+# 		end
+# 	end
 
-	def self.down
-		drop_table :books
-	end
-end
+# 	def self.down
+# 		drop_table :books
+# 	end
+# end

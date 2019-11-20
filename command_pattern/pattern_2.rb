@@ -1,3 +1,10 @@
+# Commands that records
+# Installation programs
+# Lot of commands like creating the config files, running the bat files, delete temporary files.
+# sounds like composite
+
+require 'fileutils'
+
 class Command
 	attr_reader :description
 

@@ -23,7 +23,7 @@ class HTMLFormatter < Formatter
 end
 
 class PlainFormatter < Formatter
-	def output_report(title, self)
+	def output_report(title, text)
 		puts("********#{title}***********")
 		text.each do |line|
 			puts(line)

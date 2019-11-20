@@ -11,7 +11,7 @@ HTMLFormatter = lambda do |context|
 	puts("</html>")
 end
 
-PlainFormatter = lambda do ||context
+PlainFormatter = lambda do |context|
 	puts("********#{context.title}***********")
 	context.text.each do |line|
 		puts(line)
@@ -22,7 +22,7 @@ class Report
 	attr_reader :title, :text
 	attr_accessor :formatter
 
-	def initialize(formatter)
+	def initialize(&formatter)
 		@title = 'Monthly Report'
 		@text = ['Things are going', 'really', 'really well']
 		@formatter = formatter

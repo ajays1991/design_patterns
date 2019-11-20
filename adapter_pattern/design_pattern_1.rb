@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Encrypter
 	def initialize(key)
 		@key = key
@@ -7,10 +9,12 @@ class Encrypter
 		key_index = 0
 		while not reader.eof?
 			clear_char = reader.getc
-			encrypted_char = clear_char ^ @key[key_index]
-			writer.putc(encrypted_char)
+			puts(clear_char)
+			encrypted_char = clear_char + @key[key_index]
+			writer.write(encrypted_char)
 			key_index = (key_index + 1) % @key.size
 		end
+		writer.close
 	end
 end
 
@@ -24,6 +28,7 @@ end
 class StringIOAdapter
 	def initialize(string)
 		@string = string
+		@position = 0
 	end
 
 	def getc
@@ -44,18 +49,24 @@ end
 
 # Simillary if the data comes from array of string then we need ArrayIOAdapter
 
-class StringArrayAdapter
+class ArrayIOAdapter
 	def initialize(array)
 		@array = array
 		@index = 0
+		@position = 0
 	end
 
 	def getc
 		if @index >= @array.size
 			raise EOFError
 		end
-		ch = @array[@index]
-		@index += 1
+		string = @array[@index]
+		ch = string[@position]
+		@position += 1
+		if @position == string.length
+			@index += 1
+			@position = 0
+		end
 		return ch
 	end
 
@@ -64,12 +75,12 @@ class StringArrayAdapter
 	end
 end
 
-encrypter = Encrypter.new('XXYZ')
-reader = StringIOAdapter.new("we attack at dawn")
-writer = File.open("out.txt", "w")
-encrypter.encrypt(reader, writer)
+# encrypter = Encrypter.new('XXYZ')
+# reader = StringIOAdapter.new("we attack at dawn")
+# writer = File.open("out.txt", "w")
+# encrypter.encrypt(reader, writer)
 
-encrypter = Encrypter.new('XXYZ')
-reader = ArrayIOAdapter.new(["we attack at dawn", "Its not personal its strictly business"])
+encrypter = Encrypter.new('HFSJKFHKHFKLHFLKSHDFKHKFHSFHOIEWIRUOIDHLDH')
+reader = ArrayIOAdapter.new(["we attack at dawn", "Its not personal its strictly business", "this should work just as simple IO from the file"])
 writer = File.open("out_1.txt", "w")
 encrypter.encrypt(reader, writer)

@@ -3,6 +3,7 @@ class Task
 
 	def initialize(name)
 		@name = name
+		puts(@name)
 	end
 
 	def get_time_required
@@ -52,7 +53,8 @@ class MakeBatterTask < Task
 
 	def get_time_required
 		time = 0.0
-		@sub_tasks.each { |task| time += task.get_time_required}
+		@sub_tasks.each { |task| time += task.get_time_required }
+		time
 	end
 end
 
@@ -95,6 +97,11 @@ class MakeCakeTask < Task
 
 	def get_time_required
 		time = 0.0
-		@sub_tasks.each { |task| time += task.get_time_required}
+		@sub_tasks.each { |task| time += task.get_time_required }
+		time
 	end
 end
+
+
+make_cake_task = MakeCakeTask.new
+puts(make_cake_task.get_time_required)

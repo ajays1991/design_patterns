@@ -3,6 +3,7 @@ class Task
 
 	def initialize(name)
 		@name = name
+		puts(@name)
 	end
 
 	def get_time_required
@@ -27,7 +28,8 @@ class CompositeTask < Task
 
 	def get_time_required
 		time = 0.0
-		@sub_tasks.each { |task| time += task.get_time_required}
+		@sub_tasks.each { |task| time += task.get_time_required }
+		time
 	end 
 end
 
@@ -83,7 +85,7 @@ class BakeTask < Task
 	end
 end
 
-class MakeCakeTask < Task
+class MakeCakeTask < CompositeTask
 	def initialize
 		super('Make Cake')
 		add_sub_task(MakeBatterTask.new)
@@ -91,3 +93,6 @@ class MakeCakeTask < Task
 		add_sub_task(BakeTask.new)
 	end
 end
+
+make_cake_task = MakeCakeTask.new
+puts(make_cake_task.get_time_required)
