@@ -20,7 +20,7 @@ class CompositeTask < Task
 
 	def add_sub_task(task)
 		@sub_tasks << task
-		task.parent = task
+		task.parent = self
 	end
 
 	def remove_sub_task(task)

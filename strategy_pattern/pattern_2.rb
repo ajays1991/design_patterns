@@ -18,6 +18,10 @@ PlainFormatter = lambda do |context|
 	end
 end
 
+CSVFormatter = lambda do |context|
+	puts("CSV printer")
+end
+
 class Report
 	attr_reader :title, :text
 	attr_accessor :formatter

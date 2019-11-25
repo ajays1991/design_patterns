@@ -16,6 +16,11 @@ class Employee
 		notify_observers
 	end
 
+	def title=(new_title)
+		@title = new_title
+		notify_observers
+	end
+
 	def notify_observers
 		@observers.each do |observer|
 			observer.update(self)

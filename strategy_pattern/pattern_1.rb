@@ -56,6 +56,7 @@ report = Report.new(PlainFormatter.new)
 report.output_report
 
 
+
 # In example for state tax calculations one strategy for tax calculations for virginia and one for Tennesse
 
 # Advantages
