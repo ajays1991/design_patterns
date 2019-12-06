@@ -55,6 +55,8 @@ report.output_report
 report = Report.new(PlainFormatter.new)
 report.output_report
 
+resport.formatter = CSVFormatter.new
+
 
 
 # In example for state tax calculations one strategy for tax calculations for virginia and one for Tennesse

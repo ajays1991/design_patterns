@@ -5,6 +5,7 @@ class Report
 	end
 
 	def output_report
+		plain_head
 		output_start
 		output_head
 		@text.each do |line|
@@ -13,8 +14,13 @@ class Report
 		output_end
 	end
 
+	def plain_head
+		puts("plain head")
+	end
+
 	def output_start
 	end
+
 
 	def output_head
 		raise 'called abstract method: output_head'

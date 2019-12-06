@@ -13,6 +13,11 @@ class Employee
 		@salary =new_salary
 		@payroll.update(self)
 	end
+
+	def title=(new_title)
+		@title = new_title
+		@payroll.update(self)
+	end
 end
 
 class Payroll

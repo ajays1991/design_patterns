@@ -1,6 +1,6 @@
 class SimpleWriter
 	def initialize(path)
-		@file = File.open(path)
+		@file = File.open(path, 'w')
 	end
 
 	def write_line(line)
@@ -64,24 +64,6 @@ writer = NumberingWriter.new(SimpleWriter.new('final.txt'))
 writer.write_line("Hello out there")
 
 
-class CheckSummingWriter < WriterDecorator
-
-	attr_accessor :check_sum
-
-	def initialize(real_writer)
-		@real_writer = real_writer
-		@check_sum = 0
-	end
-
-	def write_line(line)
-		line.each_byte{ |byte| @check_sum = ( @check_sum + byte ) % 256 }
-		@check_sum += "\n"[0] % 256
-		@real_writer.write_line(line)
-	end
-end
-
-
-
 class TimeStampingWriter < WriterDecorator
 
 	def initialize(real_writer)
@@ -94,7 +76,7 @@ class TimeStampingWriter < WriterDecorator
 end
 
 
-writer = CheckSummingWriter.new(TimeStampingWriter.new(NumberingWriter.new(SimpleWriter.new('final.text'))))
+writer = TimeStampingWriter.new(NumberingWriter.new(SimpleWriter.new('final.text')))
 writer.write_line("Hello world")
 
 

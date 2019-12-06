@@ -75,10 +75,10 @@ class ArrayIOAdapter
 	end
 end
 
-# encrypter = Encrypter.new('XXYZ')
-# reader = StringIOAdapter.new("we attack at dawn")
-# writer = File.open("out.txt", "w")
-# encrypter.encrypt(reader, writer)
+encrypter = Encrypter.new('XXYZ')
+reader = StringIOAdapter.new("we attack at dawn")
+writer = File.open("out.txt", "w")
+encrypter.encrypt(reader, writer)
 
 encrypter = Encrypter.new('HFSJKFHKHFKLHFLKSHDFKHKFHSFHOIEWIRUOIDHLDH')
 reader = ArrayIOAdapter.new(["we attack at dawn", "Its not personal its strictly business", "this should work just as simple IO from the file"])

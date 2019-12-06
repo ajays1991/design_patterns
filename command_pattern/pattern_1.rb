@@ -12,6 +12,12 @@ class SlickButton
 	end
 end
 
+class RadioButton
+	 def on_selected
+
+	 end
+end
+
 
 class SaveButton < SlickButton
 
