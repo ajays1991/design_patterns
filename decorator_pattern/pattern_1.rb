@@ -40,3 +40,4 @@ writer.numbering_write_line("A line with numbering")
 # Everything is thrown together in one class.
 # you might be able to seperate out all these text writing concerns by creating base class and subclass, in other words our old fashioned inheritance.
 # But what if you want to checksum your numbered output? Number of classes will go out of hand. 
+# Yes
